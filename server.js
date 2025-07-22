@@ -26,7 +26,7 @@ app.post('/create-payment', async (req, res) => {
       {
         headers: {
           'Idempotence-Key': idempotenceKey,
-          'Authorization': 'Basic ' + Buffer.from(${SHOP_ID}:${API_KEY}).toString('base64'),
+          'Authorization': 'Basic ' + Buffer.from(`${SHOP_ID}:${API_KEY}`).toString('base64'),
           'Content-Type': 'application/json'
         }
       }
