@@ -1,7 +1,11 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const app = express();
+app.use(cors({
+  origin: 'http://disciplaner.ru' 
+}));
 app.use(express.json());
 
 const SHOP_ID = '1130054';
