@@ -3,14 +3,16 @@ const axios = require('axios');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 const app = express();
 app.use(cors({ origin: 'https://disciplaner.ru' }));
 app.use(express.json());
 
 // ==== YooKassa ====
-const SHOP_ID = '1130054';
-const API_KEY = 'test_rA7JLcGVkI5QbiihyIkMKOr5CZUN5KjxmFglqWCdyb4';
+// ==== YooKassa ====
+const SHOP_ID = process.env.SHOP_ID;
+const API_KEY = process.env.API_KEY;
 
 // ==== Продукты ====
 const productLinks = {
@@ -30,6 +32,21 @@ const transporter = nodemailer.createTransport({
   auth: {
     user: 'shamilgaliev20@mail.ru',
     pass: 'W9oSJSNXMEvE '
+  }
+});
+
+app.get('/test-email', async (req, res) => {
+  try {
+    await transporter.sendMail({
+      from: '"Disciplaner" <info@disciplaner.ru>',
+      to: 'Shamilgaliev18@mail.ru', // сюда укажи адрес, куда хочешь отправить тест
+      subject: 'Тестовое письмо Disciplaner',
+      text: 'Это тестовое письмо для проверки SMTP.bz'
+    });
+    res.send('✅ Письмо отправлено');
+  } catch (err) {
+    console.error('❌ Ошибка отправки:', err.message);
+    res.status(500).send('Ошибка отправки: ' + err.message);
   }
 });
 
@@ -78,7 +95,6 @@ app.post('/create-payment', async (req, res) => {
 
 // ==== 2. Webhook YooKassa ====
 app.post('/yookassa-webhook', express.json(), async (req, res) => {
-  console.log('🔥 Webhook пришёл:', JSON.stringify(req.body, null, 2));
   const event = req.body;
   console.log('Webhook от YooKassa:', JSON.stringify(event, null, 2));
 
