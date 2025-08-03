@@ -78,6 +78,7 @@ app.post('/create-payment', async (req, res) => {
 
 // ==== 2. Webhook YooKassa ====
 app.post('/yookassa-webhook', express.json(), async (req, res) => {
+  console.log('🔥 Webhook пришёл:', JSON.stringify(req.body, null, 2));
   const event = req.body;
   console.log('Webhook от YooKassa:', JSON.stringify(event, null, 2));
 
