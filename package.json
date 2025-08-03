@@ -1,19 +1,30 @@
 {
   "name": "disciplaner",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Disciplaner сервер: YooKassa + SMTP.bz для отправки ссылок",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "yookassa",
+    "smtp",
+    "express",
+    "nodemailer",
+    "disciplaner"
+  ],
+  "author": "Твоё имя",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.10.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.0",
     "express": "^5.1.0",
+    "nodemailer": "^6.9.8",
     "uuid": "^11.1.0"
   },
-  "description": ""
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
 }
