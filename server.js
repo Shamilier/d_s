@@ -60,25 +60,37 @@ app.post('/create-payment', async (req, res) => {
   }
 
   try {
-    const response = await axios.post(
-      'https://api.yookassa.ru/v3/payments',
-      {
-        amount: { value: amount, currency: 'RUB' },
-        confirmation: {
-          type: 'redirect',
-          return_url: 'https://disciplaner.ru/success'
-        },
-        capture: true,
-        description: `Покупка Disciplaner (${items.join(', ')})`
+  const response = await axios.post(
+    'https://api.yookassa.ru/v3/payments',
+    {
+      amount: { value: amount, currency: 'RUB' },
+      confirmation: {
+        type: 'redirect',
+        return_url: 'https://disciplaner.ru/success'
       },
-      {
-        headers: {
-          'Idempotence-Key': idempotenceKey,
-          'Authorization': 'Basic ' + Buffer.from(`${SHOP_ID}:${API_KEY}`).toString('base64'),
-          'Content-Type': 'application/json'
-        }
+      capture: true,
+      description: `Покупка Disciplaner (${items.join(', ')})`,
+  
+      receipt: {
+        customer: {
+          email: email // Email покупателя из формы
+        },
+        items: items.map(item => ({
+          description: `Disciplaner: ${item}`,
+          quantity: 1,
+          amount: { value: amount, currency: 'RUB' },
+          vat_code: 1 // 1 = Без НДС
+        }))
       }
-    );
+    },
+    {
+      headers: {
+        'Idempotence-Key': idempotenceKey,
+        'Authorization': 'Basic ' + Buffer.from(`${SHOP_ID}:${API_KEY}`).toString('base64'),
+        'Content-Type': 'application/json'
+      }
+    }
+  );
 
     // Сохраняем данные платежа
     const paymentId = response.data.id;
