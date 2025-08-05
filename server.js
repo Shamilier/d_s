@@ -16,9 +16,9 @@ const API_KEY = process.env.API_KEY;
 
 // ==== Продукты ====
 const productLinks = {
-  product1: 'https://disciplaner.ru/files/tracker1.xlsx',
-  product2: 'https://disciplaner.ru/files/tracker2.xlsx',
-  product3: 'https://disciplaner.ru/files/tracker3.xlsx'
+  product1: 'https://docs.google.com/spreadsheets/d/1TFDy9c4LjhRGz295WhIAhENbkGUCamH-9fhclelO8Oo/edit?usp=sharing',
+  product2: 'https://docs.google.com/spreadsheets/d/1TFDy9c4LjhRGz295WhIAhENbkGUCamH-9fhclelO8Oo/edit?usp=sharing',
+  product3: 'https://docs.google.com/spreadsheets/d/1yQ6lnEbe3x30x_fHLCp4CH9fRbjME8UK1g8u-_PVrd4/edit?usp=sharing'
 };
 
 // Временное хранилище платежей
