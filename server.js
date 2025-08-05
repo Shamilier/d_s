@@ -17,7 +17,7 @@ const API_KEY = process.env.API_KEY;
 // ==== Продукты ====
 const productLinks = {
   product1: 'https://docs.google.com/spreadsheets/d/1TFDy9c4LjhRGz295WhIAhENbkGUCamH-9fhclelO8Oo/edit?usp=sharing',
-  product2: 'https://docs.google.com/spreadsheets/d/1TFDy9c4LjhRGz295WhIAhENbkGUCamH-9fhclelO8Oo/edit?usp=sharing',
+  product2: 'https://docs.google.com/spreadsheets/d/1iJ4GeokUGW3Gc5OW7tH06aL38qhaY0oZGNNEBiAIEbk/edit?usp=sharing ',
   product3: 'https://docs.google.com/spreadsheets/d/1yQ6lnEbe3x30x_fHLCp4CH9fRbjME8UK1g8u-_PVrd4/edit?usp=sharing'
 };
 
